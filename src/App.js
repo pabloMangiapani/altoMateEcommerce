@@ -1,11 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from './components/Navbar.js';
+import Navbar from './components/NavBar.js';
+import ItemListContainer from './components/ItemListContainer.js';
 
 function App() {
   return (
-    <Navbar></Navbar>
+    
+    <Navbar />
+    // <ItemListContainer greeting='Hola Mundo ItemListContainer' />
+    
   );
 }
 

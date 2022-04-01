@@ -1,10 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import CartWidget from "./CartWidget";
 
 const Navbar = () => {
   return (
-    <nav
-      className="navbar navbar-expand-lg navbar-light bg-lightr navbar-dark bg-dark"
-    >
+    <nav className="navbar navbar-expand-lg navbar-light bg-lightr navbar-dark bg-dark">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           Alto Mate
@@ -20,23 +19,23 @@ const Navbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <ul class="nav justify-content-end">
-          <li class="nav-item">
-            <a class="nav-link navbar-dark" href="#">
+        <div
+          className="collapse navbar-collapse justify-content-center"
+          id="navbarNavAltMarkup"
+        >
+          <div className="navbar-nav">
+            <a className="nav-link active" aria-current="page" href="#">
               Mates
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link navbar-dark" href="#">
+            <a className="nav-link" href="#">
               Yerbas
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link navbar-dark" href="#">
+            <a className="nav-link" href="#">
               Accesorios
             </a>
-          </li>
-        </ul>
+          </div>
+        </div>
+        <CartWidget/>
       </div>
     </nav>
   );
