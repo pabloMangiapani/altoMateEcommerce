@@ -5,10 +5,10 @@ import ItemListContainer from './components/ItemListContainer.js';
 
 function App() {
   return (
-    
+    <>
     <Navbar />
-    // <ItemListContainer greeting='Hola Mundo ItemListContainer' />
-    
+    <ItemListContainer greeting="Hola Mundo ItemListContainer" />
+    </>
   );
 }
 
