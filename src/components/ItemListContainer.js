@@ -8,45 +8,28 @@
 //     );
 // }
 
-import { useEffect, useState } from "react"
-import { Button } from '@material-ui/core';
-import { AddCircleOutlined, RemoveCircleOutlined } from '@mui/icons-material';
-import { ItemCounterContainer, ItemCounter } from './styledComponents';
+import ItemCount from "./ItemCount";
+import ItemList from "./ItemList";
+import customFetch from "../utils/customFetch";
+import { useEffect, useState } from "react";
+const { products } = require("../utils/products");
 
+const ItemListContainer = () => {
+  const [datos, setDatos] = useState([]);
 
+  //componentDidUpdate
+  useEffect(() => {
+    customFetch(2000, products)
+      .then((result) => setDatos(result))
+      .catch((err) => console.log(err));
+  }, []);
 
-
-const ItemListContainer = ({ stock = 20, initial = 1, onAdd} ) => {
-    const [count, setCount] = useState(0);
-
-    useEffect(() =>{
-        setCount(initial);
-    }, [] );
-
-    const addItem = () => {
-        if (count < stock) {
-            setCount(count + 1);
-        }
-    }
-
-    const removeItem = () => {
-        if (count > initial) {
-            setCount(count - 1);
-        }
-    }
-
-    return (
-        <ItemCounterContainer>
-        <Button variant="text" onClick={addItem}><AddCircleOutlined color="success" /></Button>
-        <ItemCounter>{count}</ItemCounter>
-        <Button variant="text" onClick={removeItem}><RemoveCircleOutlined color="secondary" /></Button>
-
-        <div>
-             <Button variant="contained" color="secondary" onClick={() => onAdd(count)}>Add to Cart</Button>
-        </div>
-
-        </ItemCounterContainer>
-    )
-}
+  return (
+    <>
+      <ItemList items={datos} />
+      <ItemCount stock={5} initial={1} onAdd={0} />
+    </>
+  );
+};
 
 export default ItemListContainer;
