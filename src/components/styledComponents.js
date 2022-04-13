@@ -1,3 +1,4 @@
+import { Card } from '@material-ui/core';
 import styled from 'styled-components';
 
 const ItemCounterContainer = styled.div`
@@ -85,5 +86,5 @@ const Icon = styled.div`
 `;
 
 export {
-    ItemCounterContainer, ItemCounter, ProductsContainer, Info, ProductContainer, Circle, Image, Icon
+    ItemCounterContainer, ItemCounter, ProductsContainer, Info, ProductContainer, Circle, Image, Icon,
 }
