@@ -1,33 +1,35 @@
-// const ItemListContainer = (props) => {
-//     return (
-//         <>
-//         <div>
-//             <span>{props.greeting}</span>
-//         </div>
-//         </>
-//     );
-// }
-
 import ItemCount from "./ItemCount";
 import ItemList from "./ItemList";
 import customFetch from "../utils/customFetch";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 const { products } = require("../utils/products");
 
 const ItemListContainer = () => {
   const [datos, setDatos] = useState([]);
+  const { idCategory } = useParams();
 
   //componentDidUpdate
   useEffect(() => {
-    customFetch(2000, products)
-      .then((result) => setDatos(result))
-      .catch((err) => console.log(err));
-  }, []);
+    if (idCategory === undefined) {
+      customFetch(2000, products)
+        .then((result) => setDatos(result))
+        .catch((err) => console.log(err));
+    }else {
+      customFetch(2000, products.filter(item => item.categoryId === parseInt(idCategory)))
+        .then((result) => setDatos(result))
+        .catch((err) => console.log(err));
+    }
+  }, [idCategory]);
+
+  const onAdd = (qty) =>{
+    alert ("You have selected " + qty + " items.");
+  }
 
   return (
     <>
       <ItemList items={datos} />
-      <ItemCount stock={5} initial={1} onAdd={0} />
+      <ItemCount stock={5} initial={1} onAdd={onAdd} />
     </>
   );
 };

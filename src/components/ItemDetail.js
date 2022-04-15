@@ -1,8 +1,8 @@
 import ItemCount from "./ItemCount";
 // import { DetailContainer, WrapperDetail, ImgContainer, ImageDetail, InfoContainer, Title, Desc, Price } from './styledComponents';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Card, Col } from "react-bootstrap";
-import CardGroup from 'react-bootstrap/CardGroup'
+import { Card } from "react-bootstrap";
+
 
 
 const ItemDetail = ({ item }) => {

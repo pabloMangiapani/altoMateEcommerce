@@ -1,44 +1,26 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+import { AppBar } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import CartWidget from "./CartWidget";
+import { Wrapper, Logo, MenuItem, Left, Center, Right } from './styledComponents';
 
-const Navbar = () => {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-lightr navbar-dark bg-dark">
-      <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          Alto Mate
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div
-          className="collapse navbar-collapse justify-content-center"
-          id="navbarNavAltMarkup"
-        >
-          <div className="navbar-nav">
-            <a className="nav-link active" aria-current="page" href="#">
-              Mates
-            </a>
-            <a className="nav-link" href="#">
-              Yerbas
-            </a>
-            <a className="nav-link" href="#">
-              Accesorios
-            </a>
-          </div>
-        </div>
-        <CartWidget/>
-      </div>
-    </nav>
-  );
-};
+const NavBar = () => {
+    return (
+        <AppBar position="relative">
+            <Wrapper>
+                <Left>
+                    <Link to='/' style={{textDecoration: "none", color: "white"}}><Logo>Alto Mate</Logo></Link>
+                </Left>
+                <Center>
+                    <Link to='/category/5' style={{textDecoration: "none", color: "white"}}><MenuItem>Mates</MenuItem></Link>
+                    <Link to='/category/8' style={{textDecoration: "none", color: "white"}}><MenuItem>Yerbas</MenuItem></Link>
+                    <Link to='/category/2' style={{textDecoration: "none", color: "white"}}><MenuItem>Accdesorios</MenuItem></Link>                    
+                </Center>
+                <Right>
+                    <MenuItem><CartWidget /></MenuItem>
+                </Right>
+            </Wrapper>
+        </AppBar>
+    );
+}
 
-export default Navbar;
+export default NavBar;

@@ -1,6 +1,45 @@
-import { Card } from '@material-ui/core';
 import styled from 'styled-components';
 
+//NavBar
+const Wrapper = styled.div`
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:black;
+`;
+
+const Left = styled.div`
+    flex: 1;
+    display: flex;
+    align-items: center;
+`;
+
+const Center = styled.div`
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+const Logo = styled.h1`
+    font-weight: bold;
+`;
+
+const Right = styled.div`
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+`;
+
+const MenuItem = styled.div`
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 25px;
+`;
+
+//ItemCount
 const ItemCounterContainer = styled.div`
     display: flex;
     align-items: center;
@@ -86,5 +125,5 @@ const Icon = styled.div`
 `;
 
 export {
-    ItemCounterContainer, ItemCounter, ProductsContainer, Info, ProductContainer, Circle, Image, Icon,
+    ItemCounterContainer, ItemCounter, ProductsContainer, Info, ProductContainer, Circle, Image, Icon,Wrapper,Left,Center,Logo,Right,MenuItem
 }
