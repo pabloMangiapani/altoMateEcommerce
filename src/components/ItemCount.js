@@ -30,10 +30,14 @@ const ItemCount = ({ stock = 20, initial = 1, onAdd} ) => {
         <Button variant="text" onClick={addItem}><AddCircleOutlined color="success" /></Button>
         <ItemCounter>{count}</ItemCounter>
         <Button variant="text" onClick={removeItem}><RemoveCircleOutlined color="secondary" /></Button>
-
-        <div>
+        {
+            stock && count
+            ? <Button variant="contained" color="secondary" onClick={() => onAdd(count)}>Add to Cart</Button>
+            : <Button variant="contained" disabled>Add to Cart</Button>
+        }
+        {/* <div>
              <Button variant="contained" color="secondary" onClick={() => onAdd(count)}>Add to Cart</Button>
-        </div>
+        </div> */}
 
         </ItemCounterContainer>
     )
