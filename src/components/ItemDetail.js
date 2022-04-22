@@ -1,22 +1,22 @@
 import ItemCount from "./ItemCount";
-import { Button } from '@material-ui/core';
-import { useState } from 'react';
-import { Link } from 'react-router-dom'
-// import { DetailContainer, WrapperDetail, ImgContainer, ImageDetail, InfoContainer, Title, Desc, Price } from './styledComponents';
+import { useState, useContext } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card } from "react-bootstrap";
 import CheckOut from "./CheckOut";
+import { CartContext } from './CartContext';
 
 
 
 
 const ItemDetail = ({ item }) => {
   const [itemCount, setItemCount] = useState(0);
+  const test = useContext(CartContext);
 
   const onAdd = (qty) => {
     alert("You have selected " + qty + " items.");
     setItemCount(qty);
-  };
+    test.addToCart(item, qty);
+  }
   const tab = <>&nbsp;</>;
 
   return (
@@ -40,7 +40,6 @@ const ItemDetail = ({ item }) => {
                 ? <ItemCount stock={item.stock} initial={itemCount} onAdd={onAdd} />
                 : <CheckOut />
             }
-            {/* <ItemCount stock={item.stock} initial={1} onAdd={onAdd} /> */}
           </Card>
           
        : 
