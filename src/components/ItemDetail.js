@@ -2,8 +2,10 @@ import ItemCount from "./ItemCount";
 import { useState, useContext } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card } from "react-bootstrap";
-import CheckOut from "./CheckOut";
+// import CheckOut from "./CheckOut";
 import { CartContext } from './CartContext';
+import { Link } from "react-router-dom";
+import { Button } from '@material-ui/core';
 
 
 
@@ -38,7 +40,7 @@ const ItemDetail = ({ item }) => {
             {
                 itemCount === 0
                 ? <ItemCount stock={item.stock} initial={itemCount} onAdd={onAdd} />
-                : <CheckOut />
+                : <Link to='/cart' style={{textDecoration: "none"}}><Button variant="contained" color="secondary">CheckOut</Button></Link>
             }
           </Card>
           

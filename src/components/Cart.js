@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import { CartContext } from './CartContext';
 import { WrapperCart, TitleCart, ContentCart, Product, ProductDetail, ImageCart, Details, PriceDetail, ItemCounter, ItemCounterContainer, ProductPrice } from './styledComponents';
 
+
+
 const Cart = () => {
     const test = useContext(CartContext);
 
@@ -26,7 +28,7 @@ const Cart = () => {
                     </ProductDetail>
                     <PriceDetail>
                         <ItemCounterContainer>
-                        <ItemCounter>5 items</ItemCounter>
+                        <ItemCounter>3 </ItemCounter>
                         </ItemCounterContainer>
                         <ProductPrice>$ {item.price}</ProductPrice>
                     </PriceDetail>

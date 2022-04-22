@@ -8,9 +8,9 @@ const CartContextProvider = ({children}) => {
 
     const addToCart = (item) => {
         setCartList([
-            cartList,
+          ...cartList,
             item
-        ]);
+        ]); 
     }
 
     
