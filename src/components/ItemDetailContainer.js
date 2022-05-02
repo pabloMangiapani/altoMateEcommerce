@@ -1,8 +1,9 @@
 import ItemDetail from "./ItemDetail";
-import customFetch from "../utils/customFetch";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-const { products } = require("../utils/products");
+import { doc, getDoc } from "firebase/firestore";
+import db from "../utils/firebaseConfig";
+
 
 
 const ItemDetailContainer = () => {
@@ -11,10 +12,23 @@ const ItemDetailContainer = () => {
 
   //componentDidUpdate
   useEffect(() => {
-    customFetch(2000, products.find(item => item.id === parseInt(idItem)))
-      .then(result => setDatos(result))
-      .catch(err => console.log(err));
-  }, []);
+    const fetchFromFireStoreOne = async (idItem) => {
+      const docRef = doc(db, "products", idItem);
+      const docSnap = await getDoc(docRef);
+      
+      if (docSnap.exists()) {
+        return {
+            id: idItem,
+            ...docSnap.data()
+        }
+      } else {
+        console.log("No exist this item");
+      }
+  }
+  fetchFromFireStoreOne(idItem)
+        .then(result => setDatos(result))
+        .catch(err => console.log(err))
+}, []);
 
   return (
     <>

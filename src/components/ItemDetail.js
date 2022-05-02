@@ -23,7 +23,7 @@ const ItemDetail = ({ item }) => {
 
   return (
     <>
-      {item.image ? 
+      { item && item.image ? 
         
           <Card style={{ width: '30rem' }} >
             <Card.Img variant="top" src={item.image[0]} />
