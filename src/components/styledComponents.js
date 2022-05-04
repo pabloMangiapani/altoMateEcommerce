@@ -149,6 +149,7 @@ const ProductDetail = styled.div`
 
 const ImageCart = styled.img`
   width: 200px;
+  padding:15px
 
 `;
 
