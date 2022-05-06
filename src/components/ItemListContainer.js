@@ -1,8 +1,8 @@
-import ItemCount from "./ItemCount";
+
 import ItemList from "./ItemList";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import db from "../utils/firebaseConfig";
 
 
@@ -12,28 +12,30 @@ const ItemListContainer = () => {
 
   //componentDidUpdate
   useEffect(() => {
-      const fetchFromFireStore = async () => {
-      const querySnapshot = await getDocs(collection(db, "products"));
+      const fetchFromFireStore = async (idCategory) => {
+        let q;
+        if (idCategory) {
+          q = query(collection(db, "products"), where('categoryId', '==', idCategory));
+      } else {
+          q = query(collection(db, "products"), orderBy('name'));
+      }
+      const querySnapshot = await getDocs(q);
       const dataFromFirestore =  querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data()
     }));
     return dataFromFirestore;    
   }
-  fetchFromFireStore()
+  fetchFromFireStore(idCategory)
     .then(result => setDatos(result))
     .catch(err => console.log(err));
 
   }, [idCategory]);
 
-  const onAdd = (qty) =>{
-    alert ("You have selected " + qty + " items.");
-  }
   
   return (
     <>
       <ItemList items={datos} />
-      <ItemCount stock={5} initial={1} onAdd={onAdd} />
     </>
   );
 };

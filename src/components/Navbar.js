@@ -11,9 +11,9 @@ const NavBar = () => {
                     <Link to='/' style={{textDecoration: "none", color: "white"}}><Logo>Alto Mate</Logo></Link>
                 </Left>
                 <Center>
-                    <Link to='/category/5' style={{textDecoration: "none", color: "white"}}><MenuItem>Mates</MenuItem></Link>
-                    <Link to='/category/8' style={{textDecoration: "none", color: "white"}}><MenuItem>Yerbas</MenuItem></Link>
-                    <Link to='/category/2' style={{textDecoration: "none", color: "white"}}><MenuItem>Accdesorios</MenuItem></Link>                    
+                    <Link to='/category/Mates' style={{textDecoration: "none", color: "white"}}><MenuItem>Mates</MenuItem></Link>
+                    <Link to='/category/Yerbas' style={{textDecoration: "none", color: "white"}}><MenuItem>Yerbas</MenuItem></Link>
+                    <Link to='/category/Accesorios' style={{textDecoration: "none", color: "white"}}><MenuItem>Accesorios</MenuItem></Link>                    
                 </Center>
                 <Right>
                     <MenuItem><CartWidget /></MenuItem>

@@ -2,11 +2,10 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from './CartContext';
 import { WrapperCart, TitleCart, ContentCart, Product, ProductDetail, ImageCart, Details, PriceDetail, ItemCounter, ItemCounterContainer, ProductPrice, Hr } from './styledComponents';
-
-
-
 import FormatNumber from "../utils/FormatNumber";
 import styled from "styled-components";
+import { collection, serverTimestamp, setDoc, doc } from 'firebase/firestore';
+import db from '../utils/firebaseConfig';
 
 const Top = styled.div`
   display: flex;
@@ -73,8 +72,36 @@ const Button = styled.button`
 
 const Cart = () => {
     const test = useContext(CartContext);
-    const tab = <>&nbsp;</>;
+    const checkout = () => {
+      let order = {
+        buyer: {
+          name: "comprador",
+          email: "comprador@compras.com",
+          phone: "123456789"
+        },
+        date: serverTimestamp(),
+        items: test.cartList.map(item =>({
+          id: item.idItem,
+          title: item.nameItem,
+          price: item.priceItem,
+          qty: item.qtyItem
+        })) ,
+        total: test.calcTotal(),
+     }
+      console.log(order);
 
+      const createOrderInFirestore = async () => {
+        const newOrderRef = doc(collection(db, "orders"));
+        await setDoc(newOrderRef, order);
+        return newOrderRef;
+      }
+
+      createOrderInFirestore()
+      .then(result => alert('your order has been created. please take note of the ID of your order.\n\n\nOrder ID: ' + result.id + '\n\n'))
+      .catch(err => console.log(err));
+  
+    test.removeList();
+    }
     return (
         <WrapperCart>
             <TitleCart>YOUR CART</TitleCart>
@@ -135,7 +162,7 @@ const Cart = () => {
                                 <SummaryItemText>Total</SummaryItemText>
                                 <SummaryItemPrice><FormatNumber number={test.calcTotal()} /></SummaryItemPrice>
                             </SummaryItem>
-                            <Button>CHECKOUT NOW</Button>
+                            <Button onClick={checkout}>CHECKOUT NOW</Button>
                         </Summary>
                 }
             </Bottom>
