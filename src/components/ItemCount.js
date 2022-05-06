@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { Button } from '@material-ui/core';
 import { AddCircleOutlined, RemoveCircleOutlined } from '@mui/icons-material';
 import { ItemCounterContainer, ItemCounter } from './styledComponents';
