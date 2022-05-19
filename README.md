@@ -1,5 +1,4 @@
-# Alto Mate Ecommerce ![image](https://user-images.githubusercontent.com/95263629/169187804-d951d2c3-6742-49ee-8d93-032b45dde58d.png)
-
+# Alto Mate Ecommerce ![image](https://user-images.githubusercontent.com/95263629/169188278-afc0e1bb-42db-41e7-84d3-1bde1e9dbf86.png)
 
 Este proyecto es sobre un comercio que vende mates, yerbas y accesorios materos Uruguayos.
 
